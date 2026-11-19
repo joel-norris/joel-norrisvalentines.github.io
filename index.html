@@ -573,5 +573,204 @@ function sayYes() {
 }
 </script>
 
+    <style>
+/* Expandable love letters */
+.words .note {
+    padding: 0;
+    border-top: 1px solid rgba(217, 181, 139, 0.28);
+}
+
+.words .note:last-of-type {
+    border-bottom: 1px solid rgba(217, 181, 139, 0.28);
+}
+
+.words .note-heading {
+    margin: 0;
+}
+
+.words .note-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 26px 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ink, #f2e4e1);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(24px, 5vw, 30px);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.words .note-toggle:hover,
+.words .note-toggle[aria-expanded="true"] {
+    color: var(--rose, #d98c9b);
+    transform: none;
+    box-shadow: none;
+}
+
+.words .note-toggle:focus-visible {
+    outline: 2px solid var(--gold, #d9b58b);
+    outline-offset: 4px;
+}
+
+.words .note-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(217, 181, 139, 0.5);
+    border-radius: 50%;
+    color: var(--gold, #d9b58b);
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.words .note-toggle[aria-expanded="true"] .note-icon {
+    background: rgba(217, 140, 155, 0.14);
+    border-color: var(--rose, #d98c9b);
+}
+
+.words .note-body {
+    padding: 0 4px 36px;
+    animation: none;
+}
+
+.words .note-body[hidden] {
+    display: none !important;
+}
+
+.words .note-body p {
+    margin: 0 0 1.4em;
+    color: var(--ink, #f2e4e1);
+    font-size: 21px;
+    line-height: 1.85;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.words .note-body p:last-child {
+    margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .words .note-toggle,
+    .words .note-icon {
+        transition: none;
+    }
+}
+</style>
+
+<script>
+(function () {
+    function setupLoveLetters() {
+        const titles = [
+            "Every little piece of you",
+            "My favourite place is with you",
+            "A future with you in it"
+        ];
+
+        const subtitle = document.querySelector(".words .sub");
+
+        if (subtitle) {
+            subtitle.textContent = "Three little letters. All my love. Tap to open.";
+        }
+
+        const notes = document.querySelectorAll(".words .note");
+
+        notes.forEach(function (originalNote, index) {
+            if (originalNote.dataset.expandableReady === "true") return;
+
+            const body = originalNote.querySelector(".note-body");
+            if (!body) return;
+
+            const oldHeading = originalNote.querySelector(
+                "summary, h3, .note-heading"
+            );
+
+            const fallbackTitle = oldHeading
+                ? oldHeading.textContent.trim()
+                : "A little letter for you";
+
+            let note = originalNote;
+
+            // Also supports the original <details> version.
+            if (originalNote.tagName.toLowerCase() === "details") {
+                note = document.createElement("section");
+
+                Array.from(originalNote.attributes).forEach(function (attribute) {
+                    if (attribute.name !== "open") {
+                        note.setAttribute(attribute.name, attribute.value);
+                    }
+                });
+
+                originalNote.replaceWith(note);
+            }
+
+            const heading = document.createElement("h3");
+            heading.className = "note-heading";
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "note-toggle";
+            button.id = "love-letter-toggle-" + (index + 1);
+            button.setAttribute("aria-expanded", "false");
+
+            const title = document.createElement("span");
+            title.textContent = titles[index] || fallbackTitle;
+
+            const icon = document.createElement("span");
+            icon.className = "note-icon";
+            icon.setAttribute("aria-hidden", "true");
+            icon.textContent = "+";
+
+            body.id = "love-letter-body-" + (index + 1);
+            body.hidden = true;
+            body.setAttribute("role", "region");
+            body.setAttribute("aria-labelledby", button.id);
+
+            button.setAttribute("aria-controls", body.id);
+            button.append(title, icon);
+            heading.appendChild(button);
+
+            // Move the existing paragraphs; do not rewrite their text.
+            note.replaceChildren(heading, body);
+            note.dataset.expandableReady = "true";
+
+            button.addEventListener("click", function () {
+                const isOpen =
+                    button.getAttribute("aria-expanded") === "true";
+
+                button.setAttribute("aria-expanded", String(!isOpen));
+                body.hidden = isOpen;
+                icon.textContent = isOpen ? "+" : "\u2212";
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupLoveLetters);
+    } else {
+        setupLoveLetters();
+    }
+})();
+</script>
+    
 </body>
 </html>
