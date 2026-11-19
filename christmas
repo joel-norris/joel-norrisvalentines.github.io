@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favourite Girl ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', sans-serif;
+    background: linear-gradient(135deg, #ffb6c9, #ffdee8, #ff9eb5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #a31949;
+}
+
+.snow {
+    position: fixed;
+    top: -20px;
+    color: white;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.85);
+    padding: 40px 25px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 470px;
+    box-shadow: 0 15px 50px rgba(180,30,80,0.2);
+    border: 3px solid white;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.heart {
+    font-size: 65px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    50% { transform: scale(1.2); }
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    min-height: 60px;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#yes {
+    background: #ff477e;
+    color: white;
+    box-shadow: 0 5px 15px #ffb0c5;
+}
+
+#yes:hover {
+    transform: scale(1.1);
+}
+
+#no {
+    background: #eee;
+    color: #555;
+    position: relative;
+}
+
+#surprise {
+    display: none;
+}
+
+#surprise h1 {
+    color: #ed3471;
+}
+
+.small {
+    font-size: 14px;
+    color: #c05a7a;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="question">
+    <div class="heart">🎄❤️</div>
+
+    <h1>Hey Beautiful!</h1>
+
+    <p>
+        I have a very important question...
+        <br><br>
+        Are you the BEST Christmas gift
+        I could ever ask for? 🥺
+    </p>
+
+    <div class="buttons">
+        <button id="yes" onclick="sayYes()">YES ❤️</button>
+        <button id="no">NO 🙄</button>
+    </div>
+
+    <p class="small">Choose wisely... hehe 💗</p>
+</div>
+
+<div class="card" id="surprise">
+    <div class="heart">💖🎄💖</div>
+
+    <h1>I KNEW IT!!!</h1>
+
+    <p>
+        You're my favourite person,
+        my biggest happiness and
+        the best gift life could ever give me.
+        <br><br>
+        I don't need anything under the
+        Christmas tree because I already
+        have everything I could ever want...
+        <br><br>
+        <b>YOU. ❤️</b>
+        <br><br>
+        Merry Christmas, my beautiful girl! 🎅
+    </p>
+
+    <div style="font-size:35px">💗💗💗</div>
+</div>
+
+<script>
+
+// Falling snow
+for (let i = 0; i < 45; i++) {
+    let snow = document.createElement("div");
+    snow.className = "snow";
+    snow.innerHTML = "❄";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = (3 + Math.random() * 6) + "s";
+    snow.style.animationDelay = Math.random() * 5 + "s";
+    snow.style.fontSize = (10 + Math.random() * 20) + "px";
+    document.body.appendChild(snow);
+}
+
+// The NO button runs away!
+const no = document.getElementById("no");
+
+function runAway() {
+    const rect = no.getBoundingClientRect();
+
+    no.style.position = "fixed";
+    no.style.zIndex = "10";
+
+    const maxX = window.innerWidth - rect.width - 10;
+    const maxY = window.innerHeight - rect.height - 10;
+
+    no.style.left = Math.max(10, Math.random() * maxX) + "px";
+    no.style.top = Math.max(10, Math.random() * maxY) + "px";
+}
+
+no.addEventListener("mouseover", runAway);
+no.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    runAway();
+});
+no.addEventListener("click", function(e) {
+    e.preventDefault();
+    runAway();
+});
+
+// YES surprise
+function sayYes() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("surprise").style.display = "block";
+
+    // Heart confetti
+    for (let i = 0; i < 70; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = ["❤️", "💗", "💖", "💕", "🎄"][Math.floor(Math.random() * 5)];
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-30px";
+        heart.style.fontSize = "25px";
+        heart.style.zIndex = "20";
+        heart.style.pointerEvents = "none";
+        heart.style.transition = "transform 3s linear, opacity 3s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.style.transform = "translateY(110vh) rotate(720deg)";
+            heart.style.opacity = "0";
+        }, 50);
+
+        setTimeout(() => heart.remove(), 3200);
+    }
+}
+
+</script>
+
+</body>
+</html>
