@@ -44,7 +44,6 @@ body {
 
 body.locked { overflow: hidden; }
 
-/* Candlelight motes drifting upward */
 .mote {
     position: fixed;
     bottom: -20px;
@@ -62,8 +61,6 @@ body.locked { overflow: hidden; }
     85%  { opacity: 0.35; }
     100% { transform: translate(var(--sway, 30px), -110vh); opacity: 0; }
 }
-
-/* ------------ Question screen ------------ */
 
 #question {
     min-height: 100vh;
@@ -177,8 +174,6 @@ button:focus-visible {
     color: var(--gold);
     opacity: 0.85;
 }
-
-/* ------------ Letter + gallery ------------ */
 
 #surprise {
     display: none;
@@ -298,9 +293,6 @@ button:focus-visible {
     color: var(--rose);
 }
 
-
-/* ------------ Expanding letters ------------ */
-
 .words {
     max-width: 620px;
     margin: 120px auto 0;
@@ -327,68 +319,21 @@ button:focus-visible {
 
 .note {
     border-top: 1px solid rgba(217,181,139,0.28);
+    padding: 26px 4px 40px;
 }
 
 .note:last-of-type {
     border-bottom: 1px solid rgba(217,181,139,0.28);
 }
 
-.note summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 26px 4px;
-    font-size: 24px;
+.note h3 {
+    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 500;
+    font-size: 24px;
     line-height: 1.35;
-    color: var(--ink);
-    transition: color 0.3s;
-}
-
-.note summary::-webkit-details-marker { display: none; }
-
-.note summary:hover { color: var(--rose); }
-
-.note summary:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 2px;
-}
-
-.arrow {
-    flex: 0 0 auto;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: 1px solid rgba(217,181,139,0.5);
-    position: relative;
-    transition: transform 0.45s ease, background 0.3s, border-color 0.3s;
-}
-
-.arrow::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 9px;
-    height: 9px;
-    border-right: 1.5px solid var(--gold);
-    border-bottom: 1.5px solid var(--gold);
-    transform: translate(-50%, -70%) rotate(45deg);
-}
-
-.note[open] .arrow {
-    transform: rotate(180deg);
-    background: rgba(217,140,155,0.14);
-    border-color: var(--rose);
-}
-
-.note-body {
-    padding: 4px 4px 40px;
-    animation: unfold 0.6s ease;
+    color: var(--rose);
+    margin: 0 0 18px;
 }
 
 .note-body p {
@@ -401,16 +346,6 @@ button:focus-visible {
 }
 
 .note-body p:last-child { margin-bottom: 0; }
-
-@keyframes unfold {
-    from { opacity: 0; transform: translateY(-8px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .note-body { animation: none; }
-    .arrow { transition: none; }
-}
 
 @media (max-width: 520px) {
     body { font-size: 18px; }
@@ -518,10 +453,10 @@ button:focus-visible {
 
     <section class="words">
         <h2>Words I wrote for you</h2>
-        <p class="sub">Tap the arrow to open each one.</p>
+        <p class="sub">For you, always.</p>
 
-        <details class="note">
-            <summary>I want all of you.<span class="arrow" aria-hidden="true"></span></summary>
+        <section class="note">
+            <h3>I want all of you.</h3>
             <div class="note-body">
                 <p>I want all of you.
 I want you wiktoria. Not just wiki not just my baby not just the sweet girl who cries over a bad day.
@@ -537,21 +472,21 @@ Im getting distracted
 I LOVE YOU
 MWAHHHHH</p>
             </div>
-        </details>
+        </section>
 
-        <details class="note">
-            <summary>Everything i do with you wiki feels surreal<span class="arrow" aria-hidden="true"></span></summary>
+        <section class="note">
+            <h3>Everything i do with you wiki feels surreal</h3>
             <div class="note-body">
                 <p>Everything i do with you wiki feels surreal like just perfect even when im upset like earlier it feels so warm and kind knowing not far away youre waiting for me to come to you and hold you in my arms. My heart feels so soft and blessed holding you in it its hard to describe so i write these elaborate paragraphs trying to put my words into it even when we are on call again like we are as im writing this i still enjoy those quiet moments where i get to set back a bit and just think about how truly lucky i am to even have met you. You’ve brought such joy and happiness into my life and i am scared ill lose you but even with that scared little thought i will always enjoy every soft and sweet and warm moment i ever spend with you and in the future like i said before if i can think of a future i want you in it and i wouldnt want it any other single way. Sometimes i get so happy just knowing how deeply connected weve become like damn i really got this 10/10 girl to reassure me and let me into her heart at the same time while mines been closed so long but its open for you and i hope you get comfortable in there because i dont want another single person to be in there at any other point. Hearing that sweet voice brings such calmness into my mind like a ocean at night or smth i know thats corny but what i mean is even though in some places im still rough and hard to deal with the centre where i view you is so calm and peaceful. I like when my heart beats fast even when we are laid together because every small beat reminds me just how close to my heart you are it feels like a hourglass thats managed to balance out so perfectly to try meet eachothers needs and wants its the best feeling ever anything with you reaches that best feeling because every second i spend with you brings me to a new level of just happiness wiki. I love you so much from youre stunning hair that may become purple to your feet which we joke about constantly, and i know as much of a strange person or being weird i know im your kind of weird and seeing you accept me like that brings me so much happiness. Youre my favourite person. My favourite pass time. My favourite thing to hold close.</p>
             </div>
-        </details>
+        </section>
 
-        <details class="note">
-            <summary>Wiki my love, its difficult for me to put into words<span class="arrow" aria-hidden="true"></span></summary>
+        <section class="note">
+            <h3>Wiki my love, its difficult for me to put into words</h3>
             <div class="note-body">
                 <p>Wiki my love, its difficult for me to put into words but i am infinitely grateful and proud of us and especially of you. You put up with me when i cant with myself, you take into account my feelings but dont wait to call me out on smth if theres a problem even if it ends in a idc from you lying if itd help if i changed it. I just love every single moment i ever spend with you wiki, it doesnt matter if its laughing at something stupid till our sides hurt or when you message me someone else made you laugh like that. The moments i cherish the most are the silent ones where every little look at each other speaks so much more than words describe. I love them so much because i can literally see in your eyes that you love me and theres nowhere else youd rather be in that moment. I just sit sometimes and think about how im so lucky to even have you and to have you to myself. I love you so much. I love the little things like when you say its not okay because you want a reaction to know what im actually thinking or how you lean into me after your body realises im actually there after missing me and even if youre mad at me you cant help but stay close. Even now when we are apart youre all i think about, all that i need want love and crave wiki. I love you so much its scary in a good way yes but its still scary but even then if i could choose someone to be scared with itd be you every time. I love you so much wiki. Im so truly deeply in love with all that makes you from your mind to your body. When we are apart like this it brings me down to earth and realise just how much i really do want you because when im at my mums yk i can hop on my bike be there in 10 easy right i cant do that here and it gives me a stinging feeling when i miss you that little bit more the further i am. You wiktoria are the most gorgeous and wonderful girl in my world so while you may not see it that in yours my eyes will always be on you. I mentioned that i write about you when i vent in my notes so i just thought id add them in this. “Im so scared to love wiki as deeply as i do. Every time i see her or feel her presence it brings me such safety and comfort” thats the first sentence of one and “ i have wiki my sweet girl and yet i feel not empty but so full and now im scared that filling feeling will disappear with wiki if she leaves.” Thats how deep i care for you wiki that when imagine myself being happy i imagine you and me. I treasure you so truly deeply wiki. I love you so much, ive told you before this is a fraction of my love for you i could write so many more and still have an infinite amount to say. I love you wiktoria.</p>
             </div>
-        </details>
+        </section>
     </section>
 
     <div class="finale">
@@ -563,7 +498,6 @@ MWAHHHHH</p>
 </section>
 
 <script>
-// Candlelight motes, slow and subtle
 (function () {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     for (let i = 0; i < 22; i++) {
@@ -579,7 +513,6 @@ MWAHHHHH</p>
     }
 })();
 
-// NO button slips away
 const no = document.getElementById("no");
 const noLabels = ["No", "Are you sure?", "Try again", "Not an option"];
 let noCount = 0;
@@ -611,7 +544,6 @@ no.addEventListener("click", function (e) {
     runAway();
 });
 
-// Photos develop as they scroll into view
 function watchPhotos() {
     const photos = document.querySelectorAll(".polaroid");
 
@@ -632,7 +564,6 @@ function watchPhotos() {
     photos.forEach(p => io.observe(p));
 }
 
-// YES button
 function sayYes() {
     document.getElementById("question").style.display = "none";
     document.getElementById("surprise").style.display = "block";
