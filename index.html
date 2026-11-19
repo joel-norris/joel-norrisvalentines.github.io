@@ -4,7 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Favourite Girl ❤️</title>
+<title>A Little Question For You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -14,92 +16,91 @@
 body {
     margin: 0;
     min-height: 100vh;
-    overflow: hidden;
-    font-family: 'Trebuchet MS', sans-serif;
-    background: linear-gradient(135deg, #ffb6c9, #ffdee8, #ff9eb5);
+    background: linear-gradient(135deg, #fdf6f2, #f8e5e7);
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    color: #a31949;
-}
-
-.snow {
-    position: fixed;
-    top: -20px;
-    color: white;
-    animation: fall linear infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-
-@keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); }
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    color: #543b40;
+    overflow: hidden;
 }
 
 .card {
+    background: rgba(255,255,255,0.8);
+    padding: 55px 35px;
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 15px 50px rgba(100,50,60,0.08);
+    border: 1px solid rgba(255,255,255,0.9);
     position: relative;
     z-index: 2;
-    background: rgba(255,255,255,0.85);
-    padding: 40px 25px;
-    border-radius: 30px;
-    width: 90%;
-    max-width: 470px;
-    box-shadow: 0 15px 50px rgba(180,30,80,0.2);
-    border: 3px solid white;
+}
+
+.top-text {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #b17b85;
+    margin-bottom: 25px;
 }
 
 h1 {
-    font-size: 32px;
-    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #754b54;
 }
 
 p {
-    font-size: 19px;
-    line-height: 1.6;
-}
-
-.heart {
-    font-size: 65px;
-    animation: beat 1s infinite;
-}
-
-@keyframes beat {
-    50% { transform: scale(1.2); }
+    font-size: 15px;
+    line-height: 1.9;
+    font-weight: 300;
+    color: #765f63;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-    min-height: 60px;
+    gap: 18px;
+    margin-top: 35px;
+    min-height: 50px;
 }
 
 button {
+    padding: 13px 30px;
+    border-radius: 5px;
     border: none;
-    border-radius: 30px;
-    padding: 15px 28px;
-    font-size: 18px;
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
 #yes {
-    background: #ff477e;
+    background: #ad737e;
     color: white;
-    box-shadow: 0 5px 15px #ffb0c5;
+    transition: 0.3s;
 }
 
 #yes:hover {
-    transform: scale(1.1);
+    background: #925965;
+    transform: translateY(-3px);
 }
 
 #no {
-    background: #eee;
-    color: #555;
+    background: #eee7e6;
+    color: #755e61;
     position: relative;
+}
+
+.small {
+    margin-top: 35px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #b18d93;
 }
 
 #surprise {
@@ -107,12 +108,28 @@ button {
 }
 
 #surprise h1 {
-    color: #ed3471;
+    color: #ad737e;
 }
 
-.small {
-    font-size: 14px;
-    color: #c05a7a;
+.snow {
+    position: fixed;
+    top: -20px;
+    color: white;
+    pointer-events: none;
+    animation: fall linear infinite;
+    z-index: 1;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+.heart {
+    color: #bd8490;
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 
 </style>
@@ -121,62 +138,75 @@ button {
 <body>
 
 <div class="card" id="question">
-    <div class="heart">🎄❤️</div>
 
-    <h1>Hey Beautiful!</h1>
+    <div class="heart">♡</div>
+
+    <div class="top-text">A little question</div>
+
+    <h1>To My Favourite Person</h1>
 
     <p>
-        I have a very important question...
+        Christmas is a special time of year,
+        but I already know what my favourite
+        gift is.
         <br><br>
-        Are you the BEST Christmas gift
-        I could ever ask for? 🥺
+        So I have one question for you...
+        <br><br>
+        <strong>Am I lucky enough to have the best Christmas gift ever?</strong>
     </p>
 
     <div class="buttons">
-        <button id="yes" onclick="sayYes()">YES ❤️</button>
-        <button id="no">NO 🙄</button>
+        <button id="yes" onclick="sayYes()">YES</button>
+        <button id="no">NO</button>
     </div>
 
-    <p class="small">Choose wisely... hehe 💗</p>
+    <div class="small">Choose carefully.</div>
+
 </div>
 
 <div class="card" id="surprise">
-    <div class="heart">💖🎄💖</div>
 
-    <h1>I KNEW IT!!!</h1>
+    <div class="heart">♡</div>
+
+    <div class="top-text">I knew it</div>
+
+    <h1>It's You.</h1>
 
     <p>
-        You're my favourite person,
-        my biggest happiness and
-        the best gift life could ever give me.
+        You are genuinely the best thing
+        that has ever happened to me.
         <br><br>
-        I don't need anything under the
-        Christmas tree because I already
-        have everything I could ever want...
+        I wouldn't change a single thing
+        about you or the time we spend together.
         <br><br>
-        <b>YOU. ❤️</b>
+        You make ordinary days feel special,
+        and I hope I get to make you as happy
+        as you make me.
         <br><br>
-        Merry Christmas, my beautiful girl! 🎅
+        I'm so lucky to have you.
+        <br><br>
+        <strong>Merry Christmas. I love you.</strong>
     </p>
 
-    <div style="font-size:35px">💗💗💗</div>
+    <div class="heart">♡</div>
+
 </div>
 
 <script>
 
-// Falling snow
-for (let i = 0; i < 45; i++) {
-    let snow = document.createElement("div");
+// Subtle falling snow
+for (let i = 0; i < 30; i++) {
+    const snow = document.createElement("div");
     snow.className = "snow";
-    snow.innerHTML = "❄";
+    snow.textContent = "❄";
     snow.style.left = Math.random() * 100 + "vw";
-    snow.style.animationDuration = (3 + Math.random() * 6) + "s";
+    snow.style.animationDuration = (5 + Math.random() * 7) + "s";
     snow.style.animationDelay = Math.random() * 5 + "s";
-    snow.style.fontSize = (10 + Math.random() * 20) + "px";
+    snow.style.fontSize = (8 + Math.random() * 10) + "px";
     document.body.appendChild(snow);
 }
 
-// The NO button runs away!
+// NO button runs away
 const no = document.getElementById("no");
 
 function runAway() {
@@ -193,41 +223,21 @@ function runAway() {
 }
 
 no.addEventListener("mouseover", runAway);
+
 no.addEventListener("touchstart", function(e) {
     e.preventDefault();
     runAway();
 });
+
 no.addEventListener("click", function(e) {
     e.preventDefault();
     runAway();
 });
 
-// YES surprise
+// YES button
 function sayYes() {
     document.getElementById("question").style.display = "none";
     document.getElementById("surprise").style.display = "block";
-
-    // Heart confetti
-    for (let i = 0; i < 70; i++) {
-        let heart = document.createElement("div");
-        heart.innerHTML = ["❤️", "💗", "💖", "💕", "🎄"][Math.floor(Math.random() * 5)];
-        heart.style.position = "fixed";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = "-30px";
-        heart.style.fontSize = "25px";
-        heart.style.zIndex = "20";
-        heart.style.pointerEvents = "none";
-        heart.style.transition = "transform 3s linear, opacity 3s";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.style.transform = "translateY(110vh) rotate(720deg)";
-            heart.style.opacity = "0";
-        }, 50);
-
-        setTimeout(() => heart.remove(), 3200);
-    }
 }
 
 </script>
